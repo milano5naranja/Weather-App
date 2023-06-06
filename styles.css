@@ -73,3 +73,7 @@ li {
   background-color: bisque;
   border: 1px solid bisque;
 }
+
+.footer {
+  font-family: "Courier New", Courier, monospace;
+}
