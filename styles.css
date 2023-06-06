@@ -1,0 +1,75 @@
+body {
+  background: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
+  background-size: cover;
+  font-family: "Oxygen", sans-serif;
+}
+
+h1 {
+  color: dimgray;
+  font-size: 40px;
+  font-family: "Oxygen", sans-serif;
+}
+
+ul {
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+li {
+  color: #7c7c7c;
+  font-size: 16px;
+  font-weight: 100;
+  height: 19px;
+  line-height: 1;
+  list-style: none;
+}
+
+.weather-app {
+  border: 1px solid #dadde1;
+  padding: 15px;
+  margin: 20px auto;
+  border-radius: 10px;
+  max-width: 600px;
+}
+.temperature {
+  color: rgb(33, 33, 33);
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.units {
+  position: relative;
+  top: -34px;
+}
+
+.search-form {
+  margin-bottom: 20px;
+}
+.temperatue {
+  font-size: 30px;
+}
+
+.btn-primary {
+  background-color: rgb(109, 43, 185);
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px #221c1c71;
+  font-size: 14px;
+}
+
+.btn-primary:hover {
+  background-color: aqua;
+  border: 1px solid aqua;
+}
+
+.btn-secondary {
+  background-color: darkblue;
+  border: 1px solid darkblue;
+  font-size: 14px;
+  box-shadow: 1px 1px 1px #221c1c71;
+}
+
+.btn-secondary:hover {
+  background-color: bisque;
+  border: 1px solid bisque;
+}
