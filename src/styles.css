@@ -1,40 +1,39 @@
 body {
+  font-family: "Indie Flower", cursive;
   width: 100%;
   position: sticky;
-  font-family: "Indie Flower", cursive;
-  font-size: 25px;
+  font-size: 30px;
+}
+.weather-app {
+  background-image: url("https://images.unsplash.com/photo-1632516643720-e7f5d7d6ecc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fHNpbXBsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  height: 600px;
 }
 
 h1 {
   color: black;
   font-size: 70px;
-  font-family: "Indie Flower", cursive;
+  font-weight: 100;
+  line-height: 28px;
 }
 
 ul {
-  margin: 0 0 0px;
-  padding: 25px;
-  line-height: 1;
+  margin: 0;
+  padding: 0;
 }
 
 li {
   color: black;
-  font-size: 30 px;
+  font-size: 30px;
   font-weight: 100;
-  height: 20px;
-  line-height: 1;
+  line-height: 28;
 }
 
-.weather-app {
-  background-image: url("https://images.unsplash.com/photo-1528459709161-157d86910939?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTc0fHxzaW1wbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60");
-  background-size: cover;
-  border: 1px solid #dadde1;
-  padding: 10px;
-  margin: 50px auto;
-  border-radius: 10px;
-  max-width: 1000px;
-  height: 500px;
-}
 .temperature {
   color: rgb(4, 0, 0);
   font-size: 80px;
@@ -48,7 +47,7 @@ li {
 }
 
 .search-form {
-  margin-bottom: 20px;
+  padding: 20px;
 }
 
 .btn-primary {
@@ -62,6 +61,7 @@ li {
 .btn-primary:hover {
   background-color: aqua;
   border: 1px solid aqua;
+  color: black;
 }
 
 .btn-secondary {
@@ -74,4 +74,5 @@ li {
 .btn-secondary:hover {
   background-color: bisque;
   border: 1px solid bisque;
+  color: black;
 }

@@ -10,12 +10,12 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="src/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-
+    
+    <link rel="stylesheet" href="src/styles.css" />
     <title>Weather App</title>
   </head>
 
@@ -57,19 +57,25 @@
           </div>
         </form>
 
-        <h1 id="city"></h1>
+        <h1 id="city"> </h1>
         <ul> 
           <li id="date"></li>
           <li id="description"> </li>
           </ul>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-md-6">
            
-              <div class="float-left">
+              <div class="float-left"> 
                 <span class="temperature" id="temperature"> </span>
-                <span class=""units>°C</span>
+                <span class="units">°C 
+                    <img src="  https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="clear"
+                  
+                </span> 
+                
+                
                 </div>
+                
               </div>
         <div class="col-6">
             <ul>
@@ -78,7 +84,8 @@
             </ul>
           </div>
         </div>   
-        <hr />
+     <br>
+        <br>
         <div class="weekdays">
           <div class="row" id="week-days">
           <div class="col-2">Monday <br />🌧️<br />14°C</div>
@@ -90,11 +97,11 @@
         </div>
       </div>
     </div>
+    <small><a href="https://github.com/milano5naranja/Weather-App">Open source code </a> by Jenni Salmi
+    </small>
   </div>
       
     <script src="src/script.js"></script>
 
-    <footer> <a href="
-        Open source code </footer>
   </body>
 </html>
