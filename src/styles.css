@@ -9,9 +9,9 @@ body {
   background-size: cover;
   max-width: 1000px;
   margin: 50px auto;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #dadde1;
-  border-radius: 10px;
+  border-radius: 20px;
   height: 600px;
 }
 
@@ -22,28 +22,40 @@ h1 {
   line-height: 28px;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-}
-
 li {
   color: black;
   font-size: 30px;
   font-weight: 100;
-  line-height: 28;
-}
-
-.temperature {
-  color: rgb(4, 0, 0);
-  font-size: 80px;
-  font-weight: 400;
   line-height: 1;
+  list-style: none;
 }
 
-.units {
+ul {
+  margin: 0;
+  padding: 10px;
+}
+
+.overview {
+  margin-bottom: 20px;
+}
+
+.weather-temperature img {
+  margin-right: 10px;
+  height: 64px;
+  width: 64px;
+}
+
+.weather-temperature strong {
+  color: rgb(33, 33, 33);
+  font-size: 80px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.weather-temperature .units {
   position: relative;
-  top: -34px;
+  font-size: 30px;
+  top: -24px;
 }
 
 .search-form {
