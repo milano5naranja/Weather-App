@@ -1,39 +1,43 @@
 body {
-  background: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
-  background-size: cover;
-  font-family: "Oxygen", sans-serif;
+  width: 100%;
+  position: sticky;
+  font-family: "Indie Flower", cursive;
+  font-size: 25px;
 }
 
 h1 {
-  color: dimgray;
-  font-size: 40px;
-  font-family: "Oxygen", sans-serif;
+  color: black;
+  font-size: 70px;
+  font-family: "Indie Flower", cursive;
 }
 
 ul {
-  margin: 0 0 10px;
-  padding: 0;
+  margin: 0 0 0px;
+  padding: 25px;
+  line-height: 1;
 }
 
 li {
-  color: #7c7c7c;
-  font-size: 16px;
+  color: black;
+  font-size: 30 px;
   font-weight: 100;
-  height: 19px;
+  height: 20px;
   line-height: 1;
-  list-style: none;
 }
 
 .weather-app {
+  background-image: url("https://images.unsplash.com/photo-1528459709161-157d86910939?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTc0fHxzaW1wbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
   border: 1px solid #dadde1;
-  padding: 15px;
-  margin: 20px auto;
+  padding: 10px;
+  margin: 50px auto;
   border-radius: 10px;
-  max-width: 600px;
+  max-width: 1000px;
+  height: 500px;
 }
 .temperature {
-  color: rgb(33, 33, 33);
-  font-size: 64px;
+  color: rgb(4, 0, 0);
+  font-size: 80px;
   font-weight: 400;
   line-height: 1;
 }
@@ -46,15 +50,13 @@ li {
 .search-form {
   margin-bottom: 20px;
 }
-.temperatue {
-  font-size: 30px;
-}
 
 .btn-primary {
   background-color: rgb(109, 43, 185);
   border: 1px solid black;
   box-shadow: 1px 1px 1px #221c1c71;
-  font-size: 14px;
+  font-size: 20px;
+  font-family: "Indie Flower", cursive;
 }
 
 .btn-primary:hover {
@@ -65,18 +67,11 @@ li {
 .btn-secondary {
   background-color: darkblue;
   border: 1px solid darkblue;
-  font-size: 14px;
+  font-size: 20px;
   box-shadow: 1px 1px 1px #221c1c71;
 }
 
 .btn-secondary:hover {
   background-color: bisque;
   border: 1px solid bisque;
-}
-
-.footer {
-  text-align: center;
-  
-
-  font-family: "Courier New", Courier, monospace;
 }
