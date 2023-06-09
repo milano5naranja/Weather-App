@@ -10,113 +10,110 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-      <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/styles.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
-   
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Weather App</title>
   </head>
-
   <body>
     <div class="container">
-        <div class="weather-app-wrapper">
+      <div class="weather-app-wrapper">
         <div class="weather-app">
-            <form class="search-form" class="mb-3">
-                <div class="row">
-                    <div class="col-9">
-                        <input  
-                            type="search"
-                            placeholder="Type city..."
-                            class="form-control shadow-sm"
-                            autofocus="on"
-                            autocomplete="off"
-                            id= "city-input"
-                        />
-                    </div>
-                    <div class="col-3">
-                        <input type="submit" value="Search" class="btn btn-primary w-100" />
-                    </div>
-                </div>
-            </form>
-                    
-            <div class="overview">
-                       
-
-                        <div class="col-6">
-                            class="form-control btn btn-primary shadow-sm w-100"
-                        <div class="col-3">
-                            <button
-                            class="form-control btn btn-secondary shadow-sm"
-                            type="submit"
-                            value="Search"
-                            id="current-location-button"
-                            />
-                            My location
-                            </button>
-       
-                    </div>
-                    
-                <h1 
-                id="city"> 
-                </h1>
-                <ul> 
-                    <li id="date"></li>
-                    <li id="description"> </li>
-                    </ul>
-                    
-              </div> 
-              
-                      <div class="row">
-                        <div class="col-6">
-                          <div class="d-flex weather-temperature">
-                        </div>
-                                  <img src="  https://ssl.gstatic.com/onebox/weather/64/sunny.png" 
-                                  alt="Clear" id="icon"/>
-              
-                                 <div>
-                                    <strong>12</strong><span class="units">°C | <a href="#">°F</a> </span>
-                                  </div>
-                          </div>
-                      </div>    
-                      
+          <form class="search-form" class="mb-3">
+            <div class="row">
               <div class="col-6">
-                  <ul>
-                    <li>💨 wind <span id="wind"></span> km/h</li>
-                    <li>☔️ humidity <span id="humidity"></span> %</li>
-                  </ul>
-                
-              </div>   
-           <br>
-                                
-               
+                <input
+                  type="search"
+                  placeholder="Type city..."
+                  class="form-control"
+                  id="city-input"
+                  autocomplete="off"
+                />
+              </div>
 
-                        
-    
-               
-                
-    <br>
-        <div class="weekdays">
-          <div class="row" id="week-days">
-          <div class="col-2">Monday <br />🌧️<br />14°C</div>
-          <div class="col-2">Tuesday <br />🌦️<br />15C</div>
-          <div class="col-2">Wednesday <br />⛈️ <br />15°C</div>
-          <div class="col-2">Thursday <br />🌤️<br />17°C</div>
-          <div class="col-2">Friday <br />☀️<br />18°C</div>
-          <div class="col-2">Saturday <br />☀️<br />18°C</div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="btn btn-primary w-100"
+                />
+              </div>
+
+              <div class="col-3">
+                <button
+                  class="form-control btn btn-secondary shadow-sm"
+                  type="submit"
+                  value="Search"
+                  id="current-location-button"
+                >
+                  My location
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div class="overview">
+            <h1 id="city">Helsinki</h1>
+            <ul>
+              <li id="date"></li>
+              <li id="description"></li>
+            </ul>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="d-flex weather-temperature"></div>
+              <img
+                src="  https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+                alt="Clear"
+                id="icon"
+              />
+              <strong id="temperature">18</strong
+              ><span class="units"
+                ><a href="#" id="celcius-link">C°</a> |
+                <a href="#" id="fahrenheit-link">°F</a></span
+              >
+              <div></div>
+            </div>
+
+            <div class="col-6">
+              <ul>
+                <li>💨 wind <span id="wind"></span> km/h</li>
+                <li>☔️ humidity <span id="humidity"></span> %</li>
+              </ul>
+            </div>
+          </div>
+
+          <br />
+          <br />
+          <br />
+          <div class="weekdays">
+            <div class="row" id="week-days">
+              <div class="col-2">Monday <br />🌧️<br />14°C</div>
+              <div class="col-2">Tuesday <br />🌦️<br />15C</div>
+              <div class="col-2">Wednesday <br />⛈️ <br />15°C</div>
+              <div class="col-2">Thursday <br />🌤️<br />17°C</div>
+              <div class="col-2">Friday <br />☀️<br />18°C</div>
+              <div class="col-2">Saturday <br />☀️<br />18°C</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <small><a href="https://github.com/milano5naranja/Weather-App">Open source code </a> by Jenni Salmi
-    </small>
 
+      <small>
+        <a href="https://github.com/milano5naranja/Weather-App"
+          >Open source code
+        </a>
+        by Jenni Salmi
+      </small>
     </div>
-</div>
-      
     <script src="src/script.js"></script>
-
   </body>
 </html>

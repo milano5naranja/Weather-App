@@ -1,13 +1,14 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
   let days = [
     "Sunday",
     "Monday",
@@ -31,15 +32,16 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
-  let forecastHTML = `div class="row">`;
+  let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
-      forecastHTML=
-      forecastHTML +
-      `
-     <div class="col-2">
+      forecastHTML =
+        forecastHTML +
+        `
+      <div class="col-2">
         <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
         <img
           src="http://openweathermap.org/img/wn/${
@@ -60,16 +62,14 @@ function displayForecast(response) {
   `;
     }
   });
- 
+
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
-  let apiKey = "c4f0252e46f5ob21t364250ae01f31bc7";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  let apiKey = "4f0252e46f5ob21t364250ae01f31bc7";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -82,7 +82,7 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-   celsiusTemperature = response.data.main.temp;
+  let celsiusTemperature = response.data.main.temp;
 
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
@@ -95,55 +95,23 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-  iconElement.style.display = "inline";
 
-  getForecast(response.data.coordinates);
+  getForecast(response.data.coord);
 }
 
 function search(city) {
-  let apiKey = c4f0252e46f5ob21t364250ae01f31bc7";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  let apiKey = "4f0252e46f5ob21t364250ae01f31bc7";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
   axios.get(apiUrl).then(displayTemperature);
-  
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    let cityInputElement = document.querySelector("#city-input");
-    search(cityInputElement.value)
-    console.log(cityInputElement.value);
-  
 }
-  
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
 
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", search);
-
-
-
-}
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
-let celsiusTemperature = null;
-
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
-
-function showCurrentTemp(event) {
-  event.preventDefault();
-
-navigator.geolocation.getCurrentPosition((position) => {
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
-    let apiKey = "4a4038e2f818fcb1a6d89b5c8709396";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&q=`;
-
+form.addEventListener("submit", handleSubmit);
 
 search("Helsinki");
