@@ -21,6 +21,58 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML=
+      forecastHTML +
+      `
+     <div class="col-2">
+        <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+        <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max"> ${Math.round(
+            forecastDay.temp.max
+          )}° </span>
+          <span class="weather-forecast-temperature-min"> ${Math.round(
+            forecastDay.temp.min
+          )}° </span>
+        </div>
+      </div>
+  `;
+    }
+  });
+ 
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "c4f0252e46f5ob21t364250ae01f31bc7";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -28,92 +80,70 @@ function displayTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
 
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+   celsiusTemperature = response.data.main.temp;
+
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
-  windElement.innerHTML = Math.round(response.data.wind.speed);
+  windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+  iconElement.style.display = "inline";
+
+  getForecast(response.data.coordinates);
 }
 
-let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Helsinki&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = c4f0252e46f5ob21t364250ae01f31bc7";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+  
 
-axios.get(apiUrl).then(displayTemperature);
+  function handleSubmit(event) {
+    event.preventDefault();
+    let cityInputElement = document.querySelector("#city-input");
+    search(cityInputElement.value)
+    console.log(cityInputElement.value);
+  
+}
+  
 
-//function showWeather(response) {
-//let h1 = document.querySelector("h1");
-//let temperature = Math.round(response.data.main.temp);
-//h1.innerHTML = `It is currently ${temperature}° in ${response.data.name}`;
-//}
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", search);
 
-//function retrievePosition(position) {
-//let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-//let lat = position.coords.latitude;
-//let lon = position.coords.longitude;
-//let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-//axios.get(url).then(showWeather);
 
-//let units = "metric";
-//let city = "helsinki";
-//let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-//}
 
-//navigator.geolocation.getCurrentPosition(retrievePosition);
+}
 
-//let dayIndex = date.getDay();
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
 
-//function displayWeatherCondition(response) {
-//document.querySelector("#city").innerHTML = response.data.name;
-//document.querySelector("#temperature").innerHTML = Math.round(
-//response.data.main.temp
-//);
+let celsiusTemperature = null;
 
-//document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-//document.querySelector("#wind").innerHTML = Math.round(
-//response.data.wind.speed
-//);
-//document.querySelector("#description").innerHTML =
-//response.data.weather[0].main;
-//}
-//function searchCity(city) {
 
-//function handleSubmit(event) {
-//event.preventDefault();
-//let city = document.querySelector("#city-input").value;
-//searchCity(city);
-//}
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-//function searchLocation(position) {
-//axios.get(apiUrl).then(displayWeatherCondition);
-//}
+function showCurrentTemp(event) {
+  event.preventDefault();
 
-//function getCurrentLocation(event) {
-//event.preventDefault();
-//navigator.geolocation.getCurrentPosition(searchLocation);
-//}
+navigator.geolocation.getCurrentPosition((position) => {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    let apiKey = "4a4038e2f818fcb1a6d89b5c8709396";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&q=`;
 
-//function convertToFahrenheit(event) {
-// event.preventDefault();
-//let temperatureElement = document.querySelector("#temperature");
-//temperatureElement.innerHTML = 66;
-//}
 
-//function convertToCelsius(event) {
-//event.preventDefault();
-//let temperatureElement = document.querySelector("#temperature");
-//temperatureElement.innerHTML = 19;
-//}
-
-//let dateElement = document.querySelector("#date");
-//let currentTime = new Date();
-//dateElement.innerHTML = formatDate(currentTime);
-
-//let searchForm = document.querySelector("#search-form");
-//searchForm.addEventListener("submit", handleSubmit);
-
-//let currenLocationButton = document.querySelector("#current-location-button");
-//currenLocationButton.addEventListener("click", getCurrentLocation);
-
-//searchCity("Helsinki");
+search("Helsinki");
